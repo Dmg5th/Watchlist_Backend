@@ -10,7 +10,8 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render json: @user
+    json_string = UserSerializer.new(@user).serializable_hash.to_json
+    render json: json_string
   end
 
   # POST /users
