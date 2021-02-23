@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "/login", to: "sessions#create"
+  
   resources :movies
   resources :users
   resources :user_movies
