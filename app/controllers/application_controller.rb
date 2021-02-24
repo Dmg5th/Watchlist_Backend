@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
     
     def current_user
-        User.first
+        User.find[:session][:user_movies]
     end 
 
     def logged_in?
