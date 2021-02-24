@@ -7,10 +7,21 @@ class SessionsController < ApplicationController
         render json: @user 
       else
         render json: {
-            error: "Invalid credentials"
+            error: "You entered bad data here"
         }
-    end
-end 
+      end
+    end 
+
+    def get_current_user
+      if logged_in?
+        render json: current_user
+      else 
+        render json: {
+            error: "You are not logged in currently "
+        }
+      end 
+    end 
+
 
     
 end
