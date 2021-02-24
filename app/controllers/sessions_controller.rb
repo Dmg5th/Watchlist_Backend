@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
             error: "Invalid credentials"
         }
     end
+end 
 
     
 end
