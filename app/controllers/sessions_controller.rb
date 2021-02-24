@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         render json: @user 
       else
         render json: {
-            error: "You entered bad data here"
+            error: "You entered bad data here, sessions controller"
         }
       end
     end 
