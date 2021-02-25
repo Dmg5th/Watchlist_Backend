@@ -4,18 +4,18 @@ class SessionsController < ApplicationController
       
       if @user && @user.authenticate(params[:session][:password])
         session[:user_id] = @user.id
-        render json: @user 
+        render json: UserSerializer.new(@user) 
       else
         render json: {
-            error: "You entered bad data here, sessions controller"
+            error: "Login or password is incorrect"
         }
       end
     end 
 
     def get_current_user
       if logged_in?
-        render json: current_user
-      else 
+        render json: UserSerializer.new(current_user)
+      else  
         render json: {
             error: "You are not logged in currently "
         }
@@ -29,6 +29,4 @@ class SessionsController < ApplicationController
       }, status: :ok
     end 
 
-
-    
 end
