@@ -13,14 +13,13 @@ class UserMoviesController < ApplicationController
             }
         end 
     end 
-     # GET /trips/1
+     # GET /watchlist/1
   def show
     render json: @watchlist
   end
 
-  # POST /trips
+  # POST /watchlist
   def create
-  
     @watchlist = current_user.user_movies.build(user_movie_params)
 
     if @watchlist.save
@@ -33,7 +32,7 @@ class UserMoviesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /trips/1
+  # PATCH/PUT /watchlist/1
   def update
     if @watchlist.update(user_movie_params)
       render json:  @watchlist, status: :ok
