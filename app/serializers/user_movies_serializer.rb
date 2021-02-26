@@ -1,4 +1,4 @@
   class UserMoviesSerializer
   include JSONAPI::Serializer
-  attributes 
+  attributes :title
 end
