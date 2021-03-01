@@ -4,4 +4,5 @@ class User < ApplicationRecord
     has_many :movies, through: :user_movies
 
     validates :name, :username, presence: true
+    validates :username, uniquness: true 
  end
