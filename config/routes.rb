@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   post "/signup", to: "users#create"
 
+  post "/movies", to: "movies#create"
+
+  post "/user_movies", to: "user_movies#create"
+
   resources :movies
   resources :users
   resources :user_movies

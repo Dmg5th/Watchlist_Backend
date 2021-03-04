@@ -21,7 +21,7 @@ class UserMoviesController < ApplicationController
   # POST /watchlist
   def create
     @watchlist = current_user.user_movies.build(user_movie_params)
-
+    # byebug
     if @watchlist.save
       render json:  @watchlist, status: :created
     else
@@ -64,7 +64,7 @@ class UserMoviesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_movie_params
-      params.require(:user_movie).permit("*")
+      params.require(:user_movie).permit!
     end
 end
 
