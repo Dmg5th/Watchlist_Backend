@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_190614) do
   create_table "movies", force: :cascade do |t|
     t.string "title"
     t.integer "tmdb_id"
+    t.string "poster_path"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

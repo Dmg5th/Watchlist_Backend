@@ -4,9 +4,9 @@ class UserMoviesController < ApplicationController
 
     def index
         if logged_in?
-            @watchlist = current_user.user_movies
+            @watchlist = current_user.movies
             
-            render json: current_user.user_movies
+            render json: @watchlist
         else 
             render json: {
                 error: "You must be logged in to see your watchlist"
@@ -21,9 +21,10 @@ class UserMoviesController < ApplicationController
   # POST /watchlist
   def create
     @watchlist = current_user.user_movies.build(user_movie_params)
-    # byebug
+    
     if @watchlist.save
-      render json:  @watchlist, status: :created
+      @movie = @watchlist.movie
+      render json:  @movie, status: :created
     else
       error_resp = {
         error: @watchlist.errors.full_messages.to_sentence

@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
 
     def create
         @movie = Movie.new(movie_params)
-        byebug
+       
         if @movie.save
          
           render json: @movie, status: :created
