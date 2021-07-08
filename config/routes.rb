@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post "/movies", to: "movies#create"
 
   post "/user_movies", to: "user_movies#create"
+  delete "/user_movies", to: "user_movies#destroy"
 
   resources :movies
   resources :users

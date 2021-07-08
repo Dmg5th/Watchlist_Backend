@@ -1,5 +1,5 @@
 class UserMoviesController < ApplicationController
-    before_action :set_user_movie, only: [:show, :update, :destroy]
+    # before_action :set_user_movie, only: [:show, :update, :destroy]
 
 
     def index
@@ -21,7 +21,7 @@ class UserMoviesController < ApplicationController
   # POST /watchlist
   def create
     @watchlist = current_user.user_movies.build(user_movie_params)
-    
+    # byebug
     if @watchlist.save
       @movie = @watchlist.movie
       render json:  @movie, status: :created
@@ -47,7 +47,9 @@ class UserMoviesController < ApplicationController
 
   # DELETE /user_movie/1
   def destroy
-    if @watchlist.destroy
+  
+   @movie = current_user.user_movies.find_by(movie_id: params[:id])
+   if @movie.destroy
       render json:  { data: "Watchlist successfully destroyed" }, status: :ok
     else
       error_resp = {
@@ -60,7 +62,8 @@ class UserMoviesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_movie
-      @watchlist = UserMovie.find(params[:id])
+      # byebug
+      @watchlist = current_user.movies
     end
 
     # Only allow a trusted parameter "white list" through.
